@@ -1,0 +1,54 @@
+{
+    "typescript.tsc.autoDetect": "off",
+    "[typescript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.formatOnSave": true
+	},
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.formatOnSave": true
+	},
+    "eslint.run": "onType",
+	"eslint.format.enable": true,
+	"files.exclude": {
+        // important
+		// "out": true,
+		"node_modules": true,
+		"package.json": true,
+		"tsconfig.json": true,
+		
+		// folders
+		".vscode": true,
+		".git": true,
+		
+		// files
+		"README.md": true,
+		".gitignore": true,
+		".prettierrc": true,
+		".eslintrc.json": true,
+		".vscodeignore": true,
+		"CHANGELOG.md": true,
+		"package-lock.json": true,
+	},
+
+	"search.exclude": {
+		// important
+		"out": true,
+		"node_modules": true,
+		"package.json": false,
+		"tsconfig.json": false,
+		
+		// folders
+		".vscode": false,
+		".git": true,
+		
+		// files
+		"README.md": false,
+		".gitignore": false,
+		".eslintrc.json": false,
+		".prettierrc": false,
+		".vscodeignore": false,
+		"CHANGELOG.md": false,
+		"package-lock.json": false,
+	}
+}
