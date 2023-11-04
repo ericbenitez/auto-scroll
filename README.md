@@ -7,5 +7,6 @@ When enabled, will keep the current line in the center of editor.
 2. Run `Auto Scroll: Toggle`
 
 You can see an indicator if it's running in the status bar.
+(also behaves as a button to toggle auto scrolling)
 
-# Ok 
+ok

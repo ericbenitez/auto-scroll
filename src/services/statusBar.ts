@@ -12,6 +12,7 @@ export default class StatusBarService extends Service implements OnInit, OnDestr
 		this.statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
 		this.statusBarItem.text = `Auto Scroll: ${this.state.isEnabled() ? "ON" : "OFF"}`;
 		this.statusBarItem.command = `auto-scroll.toggle`;
+		this.statusBarItem.tooltip = "Toggle auto scrolling";
 		this.context.subscriptions.push(this.statusBarItem);
 
 		this.statusBarItem.show();

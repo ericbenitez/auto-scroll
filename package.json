@@ -22,12 +22,12 @@
       }
     ],
     "configuration": {
-      "title": "Auto Scroll Configuration",
+      "title": "Auto Scroll",
       "properties": {
         "auto-scroll.enabled": {
           "type": "boolean",
           "default": true,
-          "description": "Toggle enable Auto Scroll"
+          "description": "Toggle auto scrolling"
         }
       }
     }
