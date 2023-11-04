@@ -3,7 +3,7 @@
   "displayName": "Auto Scroll",
   "publisher": "LamborGhinious",
   "description": "",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "engines": {
     "vscode": "^1.84.0"
   },
