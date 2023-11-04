@@ -49,5 +49,4 @@
 		"CHANGELOG.md": false,
 		"package-lock.json": false
 	},
-	"typewriterAutoScroll.enable": true
 }

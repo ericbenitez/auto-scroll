@@ -10,7 +10,7 @@ export default class StatusBarService extends Service implements OnInit, OnDestr
 		this.trove = new Trove();
 
 		this.statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
-		this.statusBarItem.text = `Auto Scroll: ${this.state.isActive() ? "ON" : "OFF"}`;
+		this.statusBarItem.text = `Auto Scroll: ${this.state.isEnabled() ? "ON" : "OFF"}`;
 		this.context.subscriptions.push(this.statusBarItem);
 
 		this.statusBarItem.show();
@@ -18,8 +18,8 @@ export default class StatusBarService extends Service implements OnInit, OnDestr
 	}
 
 	private connectEvents(): void {
-		const connection = this.state.onActiveChanged.connect((isActive) => {
-			this.statusBarItem.text = `Auto Scroll: ${isActive ? "ON" : "OFF"}`;
+		const connection = this.state.onEnabledChanged.connect((isEnabled) => {
+			this.statusBarItem.text = `Auto Scroll: ${isEnabled ? "ON" : "OFF"}`;
 		});
 
 		this.trove.add(() => {

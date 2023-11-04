@@ -8,7 +8,7 @@ import StatusBarService from "./services/statusBar";
 const services: Service[] = [];
 
 export async function activate(context: vscode.ExtensionContext) {
-	const state = new State();
+	const state = new State(context);
 
 	services.push(new CommandService(context, state));
 	services.push(new ScrollService(context, state));

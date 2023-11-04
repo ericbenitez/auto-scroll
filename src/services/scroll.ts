@@ -13,12 +13,13 @@ export default class ScrollService extends Service implements OnInit, OnDestroy 
 	}
 
 	private connectEvents(): void {
-		this.connection = this.state.onActiveChanged.connect((isActive) => this.onActiveChanged(isActive));
+		this.connection = this.state.onEnabledChanged.connect((isEnabled) => this.onEnabledChanged(isEnabled));
+		this.onEnabledChanged(this.state.isEnabled());
 	}
 
-	private onActiveChanged(isActive: boolean) {
+	private onEnabledChanged(isEnabled: boolean) {
 		this.trove.clean();
-		if (isActive) {
+		if (isEnabled) {
 			const currentEditor = vscode.window.activeTextEditor;
 			if (currentEditor) {
 				const mockEvent: vscode.TextEditorSelectionChangeEvent = {
@@ -41,12 +42,14 @@ export default class ScrollService extends Service implements OnInit, OnDestroy 
 	}
 
 	private centerCursorInView(event: vscode.TextEditorSelectionChangeEvent): void {
-		if (event.kind === vscode.TextEditorSelectionChangeKind.Keyboard) {
-			if (event.textEditor && event.selections.length) {
-				const centerOfViewport = vscode.TextEditorRevealType.InCenter;
-				const range = new vscode.Range(event.selections[0].start, event.selections[0].end);
-				event.textEditor.revealRange(range, centerOfViewport);
-			}
+		const notMouse = event.kind !== vscode.TextEditorSelectionChangeKind.Mouse;
+		const textEditor = event.textEditor;
+		const length = event.selections.length;
+
+		if (notMouse && textEditor && length) {
+			const centerOfViewport = vscode.TextEditorRevealType.InCenter;
+			const range = new vscode.Range(event.selections[0].start, event.selections[0].end);
+			event.textEditor.revealRange(range, centerOfViewport);
 		}
 	}
 

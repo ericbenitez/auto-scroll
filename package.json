@@ -20,7 +20,18 @@
         "command": "auto-scroll.toggle",
         "title": "Auto Scroll: Toggle"
       }
-    ]
+    ],
+
+    "configuration": {
+      "title": "Auto Scroll Configuration",
+      "properties": {
+        "auto-scroll.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Toggle enable Auto Scroll"
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
