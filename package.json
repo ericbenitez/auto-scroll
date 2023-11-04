@@ -3,7 +3,7 @@
   "displayName": "Auto Scroll",
   "publisher": "LamborGhinious",
   "description": "",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "engines": {
     "vscode": "^1.84.0"
   },
@@ -21,7 +21,6 @@
         "title": "Auto Scroll: Toggle"
       }
     ],
-
     "configuration": {
       "title": "Auto Scroll Configuration",
       "properties": {
