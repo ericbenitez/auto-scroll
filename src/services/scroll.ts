@@ -20,17 +20,6 @@ export default class ScrollService extends Service implements OnInit, OnDestroy 
 	private onEnabledChanged(isEnabled: boolean) {
 		this.trove.clean();
 		if (isEnabled) {
-			const currentEditor = vscode.window.activeTextEditor;
-			if (currentEditor) {
-				const mockEvent: vscode.TextEditorSelectionChangeEvent = {
-					textEditor: currentEditor,
-					kind: vscode.TextEditorSelectionChangeKind.Command,
-					selections: currentEditor.selections,
-				};
-
-				this.centerCursorInView(mockEvent);
-			}
-
 			const connection = vscode.window.onDidChangeTextEditorSelection((event) => {
 				this.centerCursorInView(event);
 			});

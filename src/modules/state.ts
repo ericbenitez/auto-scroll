@@ -11,7 +11,7 @@ export class State {
 		this.onEnabledChanged = new Signal();
 
 		const configuration = vscode.workspace.getConfiguration("auto-scroll");
-		this.enabled = configuration.get<boolean>("enabled")!; // assertion because default = true in package.json
+		this.enabled = configuration.get<boolean>("enabled") ?? true;
 
 		this.connectEvents();
 	}
@@ -19,16 +19,16 @@ export class State {
 	private connectEvents(): void {
 		const connection = vscode.workspace.onDidChangeConfiguration((event) => {
 			if (event.affectsConfiguration("auto-scroll")) {
-				this.onDidChangeConfiguration();
+				this.onConfigurationChange();
 			}
 		});
 
 		this.context.subscriptions.push(connection);
 	}
 
-	private onDidChangeConfiguration() {
+	private onConfigurationChange() {
 		const configuration = vscode.workspace.getConfiguration("auto-scroll");
-		this.enabled = configuration.get<boolean>("enabled")!;
+		this.enabled = configuration.get<boolean>("enabled") ?? true;
 		this.onEnabledChanged.fire(this.enabled);
 	}
 
@@ -36,8 +36,10 @@ export class State {
 		return this.enabled;
 	}
 
-	public toggleConfiguration() {
+	public toggleEnabled() {
+		this.enabled = !this.enabled;
 		const configuration = vscode.workspace.getConfiguration("auto-scroll");
-		configuration.update("enabled", !this.enabled);
+		configuration.update("enabled", this.enabled);
+		this.onEnabledChanged.fire(this.enabled);
 	}
 }
