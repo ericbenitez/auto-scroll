@@ -1,6 +1,6 @@
 {
-    "typescript.tsc.autoDetect": "off",
-    "[typescript]": {
+	"typescript.tsc.autoDetect": "off",
+	"[typescript]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		"editor.formatOnSave": true
 	},
@@ -8,19 +8,17 @@
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		"editor.formatOnSave": true
 	},
-    "eslint.run": "onType",
+	"eslint.run": "onType",
 	"eslint.format.enable": true,
 	"files.exclude": {
-        // // important
+		// // important
 		// // "out": true,
 		// "node_modules": true,
 		// "package.json": true,
 		// "tsconfig.json": true,
-		
 		// // folders
 		// ".vscode": true,
 		// ".git": true,
-		
 		// // files
 		// "README.md": true,
 		// ".gitignore": true,
@@ -37,11 +35,11 @@
 		"node_modules": true,
 		"package.json": false,
 		"tsconfig.json": false,
-		
+
 		// folders
 		".vscode": false,
 		".git": true,
-		
+
 		// files
 		"README.md": false,
 		".gitignore": false,
@@ -49,6 +47,7 @@
 		".prettierrc": false,
 		".vscodeignore": false,
 		"CHANGELOG.md": false,
-		"package-lock.json": false,
-	}
+		"package-lock.json": false
+	},
+	"typewriterAutoScroll.enable": true
 }

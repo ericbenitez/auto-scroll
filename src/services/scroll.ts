@@ -40,11 +40,13 @@ export default class ScrollService extends Service implements OnInit, OnDestroy 
 		}
 	}
 
-	private centerCursorInView(e: vscode.TextEditorSelectionChangeEvent): void {
-		if (e.textEditor && e.selections.length) {
-			const centerOfViewport = vscode.TextEditorRevealType.InCenter;
-			const range = new vscode.Range(e.selections[0].start, e.selections[0].end);
-			e.textEditor.revealRange(range, centerOfViewport);
+	private centerCursorInView(event: vscode.TextEditorSelectionChangeEvent): void {
+		if (event.kind === vscode.TextEditorSelectionChangeKind.Keyboard) {
+			if (event.textEditor && event.selections.length) {
+				const centerOfViewport = vscode.TextEditorRevealType.InCenter;
+				const range = new vscode.Range(event.selections[0].start, event.selections[0].end);
+				event.textEditor.revealRange(range, centerOfViewport);
+			}
 		}
 	}
 
