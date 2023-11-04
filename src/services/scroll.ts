@@ -1,9 +1,11 @@
 import * as vscode from "vscode";
 import { OnDestroy, OnInit, Service } from "../core/service";
+import { Connection } from "../modules/signal";
 import { Trove } from "../modules/trove";
 
 export default class ScrollService extends Service implements OnInit, OnDestroy {
 	private trove: Trove;
+	private connection: Connection;
 
 	onInit(): void {
 		this.trove = new Trove();
@@ -11,10 +13,7 @@ export default class ScrollService extends Service implements OnInit, OnDestroy 
 	}
 
 	private connectEvents(): void {
-		const connection = this.state.onActiveChanged.connect((isActive) => this.onActiveChanged(isActive));
-		this.trove.add(() => {
-			connection.disconnect();
-		});
+		this.connection = this.state.onActiveChanged.connect((isActive) => this.onActiveChanged(isActive));
 	}
 
 	private onActiveChanged(isActive: boolean) {
@@ -51,5 +50,6 @@ export default class ScrollService extends Service implements OnInit, OnDestroy 
 
 	onDestroy(): void {
 		this.trove.clean();
+		this.connection.disconnect();
 	}
 }

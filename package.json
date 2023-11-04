@@ -11,7 +11,7 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:auto-scroll.toggle"
+    "*"
   ],
   "main": "./out/extension.js",
   "contributes": {
