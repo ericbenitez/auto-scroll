@@ -32,13 +32,13 @@ export default class ScrollService extends Service implements OnInit, OnDestroy 
 
 	private centerCursorInView(event: vscode.TextEditorSelectionChangeEvent): void {
 		const notMouse = event.kind !== vscode.TextEditorSelectionChangeKind.Mouse;
-		const textEditor = event.textEditor;
-		const length = event.selections.length;
+		const textEditor = vscode.window.activeTextEditor;
 
-		if (notMouse && textEditor && length) {
-			const centerOfViewport = vscode.TextEditorRevealType.InCenter;
-			const range = new vscode.Range(event.selections[0].start, event.selections[0].end);
-			event.textEditor.revealRange(range, centerOfViewport);
+		if (notMouse && textEditor) {
+			const selection = textEditor.selection;
+			const scrollPosition = new vscode.Position(selection.active.line, selection.active.character);
+			const range = new vscode.Range(scrollPosition, scrollPosition);
+			textEditor.revealRange(range, vscode.TextEditorRevealType.InCenter);
 		}
 	}
 
